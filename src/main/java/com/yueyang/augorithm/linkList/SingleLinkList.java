@@ -2,6 +2,8 @@ package com.yueyang.augorithm.linkList;
 
 import org.junit.Test;
 
+import java.util.Stack;
+
 /**
  * @program: augorithm
  * @description: 第一种方法在添加英雄时，直接添加到链表的尾部
@@ -157,6 +159,53 @@ public class SingleLinkList {
 
 
     /**
+     * 获取单链表的有效数据，如果带头结点的链表，需要不统计头结点
+     */
+
+    public int size() {
+        if (head.next == null) {
+            return 0;
+        }
+
+        int size = 0;
+        HeroNode temp = head.next;
+        while (temp != null) {
+            size++;
+            temp = temp.next;
+        }
+
+        return size;
+    }
+
+    /**
+     * 查找单链表的倒数第k个节点
+     * <p>
+     * 思路如下
+     * 编写一个方接受index
+     * 先把链表从头到尾遍历，看看有几个节点，
+     * 得到 链表，遍历size-index个节点
+     */
+
+    public HeroNode getKInvert(int index) {
+        int size = size();
+        if (index > size) {
+            System.out.println("输入的值超过链表的长度");
+            return null;
+        }
+        int location = size - index;
+        HeroNode temp = head.next;
+        while (location != 0) {
+            if (temp == null) {
+                break;
+            }
+            location--;
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+
+    /**
      * 遍历节点
      */
 
@@ -176,6 +225,74 @@ public class SingleLinkList {
         }
 
     }
+
+    /**
+     * 单链表的节点反转
+     * <p>
+     * 1，定义一个新的节点  reverts
+     * 2，从头到尾遍历原来的链表，就将其取放在链表的最前端
+     * 3，原来的链表的head.next=reverts.next
+     */
+    public void revert() {
+        if (head.next == null || head.next.next == null) {
+            return;
+        }
+
+        HeroNode revertHeads = new HeroNode(0, "", "");
+
+        HeroNode temp = head.next;
+        HeroNode next = null;
+
+        //遍历原来的链表，
+        while (temp != null) {
+            //暂时保存当前的节点
+            next = temp.next;
+            //临时节点的下一个节点指向新的节点最前端
+            HeroNode tempHead = revertHeads.next;//保存新链表的下一个节点
+            revertHeads.next = temp;//将临时的节点加到新的链表上
+            revertHeads.next.next = tempHead;
+
+            //后移
+            temp = next;
+        }
+
+        head.next = revertHeads.next;
+    }
+
+
+    /**
+     * 从尾到头  打印单链表
+     * 要求方式
+     * 方式 1，反向遍历
+     * 先将单链表反转操作，再打印，问题：会破坏原来的单链表，不建议
+     * 方式  2，stack栈
+     * 利用栈的先进后出的特点LIFO，实现逆序打印
+     */
+    public void revertPrint() {
+        if (head.next == null) {
+            System.out.println("空链表。。。");
+            return;
+        }
+        Stack<HeroNode> stack = new Stack<HeroNode>();
+
+        HeroNode temp = head.next;
+        while (temp != null) {
+            stack.add(temp);
+            temp = temp.next;
+        }
+
+        while (stack.size() > 0) {
+            System.out.println(stack.pop());
+        }
+
+    }
+
+    /**
+     * 合并两个有序链表
+     * 合并之后链表依然有序
+     */
+
+
 
 
     @Test
@@ -201,12 +318,27 @@ public class SingleLinkList {
 
 
         //修改节点
-        HeroNode heroNode = new HeroNode(3, "李逵", "黑旋风");
-        singleLinkList.update(heroNode);
+//        HeroNode heroNode = new HeroNode(3, "李逵", "黑旋风");
+//        singleLinkList.update(heroNode);
 
-        singleLinkList.remove(3);
+        //删除
+        // singleLinkList.remove(3);
+        //System.out.println(singleLinkList.size());
+
+        //获取倒数第三个节点
+//        HeroNode kInvert = singleLinkList.getKInvert(2);
+//        System.out.println(kInvert);
 
         singleLinkList.list();
+
+        System.out.println("");
+
+        //反转
+//        singleLinkList.revert();
+//        singleLinkList.list();
+
+        //逆序打印
+        singleLinkList.revertPrint();
 
     }
 
