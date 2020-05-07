@@ -28,7 +28,7 @@ public class QueueArray {
 
     //创建队列的构造器
     public QueueArray(int maxSize) {
-        maxSize = this.maxSize;
+        this.maxSize = maxSize;
         //初始化数组
         arr = new int[maxSize];
         //指向队列头的前一个位置

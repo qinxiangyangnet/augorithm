@@ -15,6 +15,10 @@ public class QueueArrayDemo {
 
         QueueArray queueArray = new QueueArray(3);
 
+        queueArrayTest(queueArray);
+    }
+
+    private static void queueArrayTest(QueueArray queueArray) {
         char key = ' ';
         Scanner scanner = new Scanner(System.in);
 
