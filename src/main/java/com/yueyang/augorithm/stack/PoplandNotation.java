@@ -20,6 +20,28 @@ public class PoplandNotation {
         System.out.println(calculate);
     }
 
+    public String poplandNotationTransfer(String expression) {
+
+
+        return null;
+    }
+
+
+    public static List<String> toInffixExpresion(String s) {
+        List<String> ls = new ArrayList<String>();
+        int i = 0;//用于遍历字符串
+        String str = "";//多位数的操作
+        char c;
+        do {
+            //如果c是一个非数字，加入到集合中
+            if ((c = s.charAt(i)) < 48 || (c = s.charAt(i)) > 57) {
+
+            }
+
+        } while (i < s.length());
+        return null;
+    }
+
     /**
      * 将逆波兰表达式 一次将数据和运算符放入集合中
      */
