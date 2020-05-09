@@ -9,7 +9,7 @@ package com.yueyang.augorithm.stack;
 public class Calculator {
     public static void main(String[] args) {
 
-        String expression = "3+2*6-2*5";
+        String expression = "30+2*6-2*5";
 
         //创建两个栈
         StackArray numberStack = new StackArray(10);
@@ -21,6 +21,7 @@ public class Calculator {
         int oper = 0;
         int res = 0;
         int ch = ' ';//将每次扫描得到的char保存到ch
+        String str = "";
 
         //遍历表达式
         for (int i = 0; i < expression.length(); i++) {
@@ -43,7 +44,20 @@ public class Calculator {
                     operStack.push(c);
                 }
             } else {
-                numberStack.push(c - 48);
+                //多位数的问题
+                //numberStack.push(c - 48);
+                //当处理多位数的时候，不能出现一个数就入栈，需要定义一个字符串用于拼接多位数
+                str += c;
+                //判断下一个字符是不是数字
+                if (i == expression.length() - 1) {
+                    numberStack.push(Integer.parseInt(str));
+                } else {
+                    if(isOper(expression.substring(i+1,i+2).charAt(0))){
+                        numberStack.push(Integer.parseInt(str));
+                        str="";
+                    }
+
+                }
             }
         }
 
