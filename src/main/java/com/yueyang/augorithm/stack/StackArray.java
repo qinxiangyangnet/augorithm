@@ -72,6 +72,18 @@ public class StackArray {
         return value;
     }
 
+
+    /**
+     * 得到栈顶的值
+     * 不是正正的出栈
+     */
+    public int peak() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return stackArray[top];
+    }
+
     /**
      * 栈遍历
      */
@@ -85,7 +97,6 @@ public class StackArray {
             System.out.println(stackArray[i]);
         }
     }
-
 
 
 }

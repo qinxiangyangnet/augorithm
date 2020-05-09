@@ -9,14 +9,58 @@ package com.yueyang.augorithm.stack;
 public class Calculator {
     public static void main(String[] args) {
 
-        String expression = "3+2*6-2";
+        String expression = "3+2*6-2*5";
 
         //创建两个栈
         StackArray numberStack = new StackArray(10);
         StackArray operStack = new StackArray(10);
 
         //定义需要的相关变量
-        int  
+        int num1 = 0;
+        int num2 = 0;
+        int oper = 0;
+        int res = 0;
+        int ch = ' ';//将每次扫描得到的char保存到ch
+
+        //遍历表达式
+        for (int i = 0; i < expression.length(); i++) {
+            char c = expression.charAt(i);
+            if (isOper(c)) {
+                if (!operStack.isEmpty()) {
+                    //不为空
+                    if (priority(c) <= priority(operStack.peak())) {
+                        //优先级
+                        num1 = numberStack.pop();
+                        num2 = numberStack.pop();
+                        oper = operStack.pop();
+                        res = cal(num1, num2, oper);
+                        //并将结果放入数栈中
+                        numberStack.push(res);
+                    }
+                    operStack.push(c);
+                } else {
+                    //为空直接入栈
+                    operStack.push(c);
+                }
+            } else {
+                numberStack.push(c - 48);
+            }
+        }
+
+//***************表达式遍历完毕**********************
+        if (operStack.isEmpty()) {
+            System.out.println(numberStack.pop());
+        }
+
+        while (!operStack.isEmpty()) {
+            oper = operStack.pop();
+            num1 = numberStack.pop();
+            num2 = numberStack.pop();
+            res = cal(num1, num2, oper);
+            numberStack.push(res);
+        }
+
+        System.out.println(numberStack.pop());
 
     }
 
@@ -29,7 +73,7 @@ public class Calculator {
      */
 
 
-    public int priority(int oper) {
+    public static int priority(int oper) {
 
         if (oper == '*' || oper == '/') {
             return 1;
@@ -50,7 +94,7 @@ public class Calculator {
      * @param val
      * @return
      */
-    public boolean isOper(char val) {
+    public static boolean isOper(char val) {
 
         return val == '+' || val == '-' || val == '*' || val == '/';
 
@@ -60,7 +104,7 @@ public class Calculator {
      * 计算方法
      */
 
-    public int cal(int num1, int num2, int oper) {
+    public static int cal(int num1, int num2, int oper) {
         int res = 0;
         switch (oper) {
             case '+':
