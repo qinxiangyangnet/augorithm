@@ -20,7 +20,6 @@ public class Queen8 {
         System.out.println("一共有：" + count + " 解法");
     }
 
-
     public static void check(int n) {
         if (n == 8) {
             //表示前面8个皇后已经完成
