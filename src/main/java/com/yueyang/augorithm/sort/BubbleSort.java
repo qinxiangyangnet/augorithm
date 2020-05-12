@@ -34,7 +34,7 @@ public class BubbleSort {
                 }
                 count++;
             }
-           // System.out.println("第" + i + "次：：： " + count);
+            // System.out.println("第" + i + "次：：： " + count);
 
         }
     }
@@ -84,13 +84,13 @@ public class BubbleSort {
         for (int i = 0; i < 80000; i++) {
             arr2[i] = (int) (Math.random() * 80000);
         }
-       // System.out.println(Arrays.toString(arr2));
+        // System.out.println(Arrays.toString(arr2));
 
         long begin = System.currentTimeMillis();
 
-        bubbleSort(arr2);
+        bubbleSort1(arr2);
         long end = System.currentTimeMillis();
-       // System.out.println(Arrays.toString(arr2));
+        System.out.println(Arrays.toString(arr2));
         System.out.println("花费时间：" + (end - begin));
     }
 }
