@@ -19,7 +19,6 @@ public class ChooseSort {
             return;
         }
 
-
         for (int i = 0; i < arr.length - 1; i++) {
             //从遍历处进行初始化
             int index = i;
