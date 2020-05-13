@@ -25,6 +25,7 @@ public class InsertSort {
             //insertValue < arr[insertIndex]  待插入的数还没有找到插入的位置
 
             while (insertIndex >= 0 && insertValue < arr[insertIndex]) {
+                //将arr[insertIndex]后移，让出来
                 arr[insertIndex + 1] = arr[insertIndex];
                 insertIndex--;
 
@@ -49,7 +50,7 @@ public class InsertSort {
 
         long begin = System.currentTimeMillis();
 
-        insertSort(arr);
+        insertSort(arr2);
         long end = System.currentTimeMillis();
         System.out.println(end - begin);
         System.out.println(Arrays.toString(arr));
