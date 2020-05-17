@@ -48,9 +48,21 @@ public class FibSearch {
             mid = low + fib[k - 1] - 1;
             if (key < temp[mid]) {
                 high = mid - 1;
+                /**
+                 * 1，全部元素=前面的元素+后面的元素
+                 * 2，f[k]=f[k-1]+f[k-2]
+                 * 3,因为前面有f[k-1]个元素，所以继续拆分f[k-1]=f[k-2]+f[k-3]
+                 * 4,在f[k-1]继续查找，所以k--
+                 */
                 k--;
             } else if (key > temp[mid]) {
                 low = mid++;
+                /**
+                 * 1，全部元素=前面的元素+后面的元素
+                 * 2，f[k]=f[k-1]+f[k-2]
+                 * 3,因为后面有f[k-2]个元素，所以继续拆分f[k-2]=f[k-3]+f[k-4]
+                 * 4,在f[k-1]继续查找，所以k--
+                 */
                 k -= 2;
             } else {
                 if (mid <= high) {
