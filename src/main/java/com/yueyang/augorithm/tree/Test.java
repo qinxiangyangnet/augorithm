@@ -9,6 +9,9 @@ package com.yueyang.augorithm.tree;
 public class Test {
 
 
+    /**
+     * 测试二叉树遍历
+     */
     @org.junit.Test
     public void testBinaryTree() {
 
@@ -38,6 +41,44 @@ public class Test {
         //后序遍历
         System.out.println("后序遍历---------------------");
         binaryTree.aftOrder();
+
+    }
+
+    /**
+     * 测试二叉树查找
+     */
+    @org.junit.Test
+    public void test() {
+        //创建二叉树
+        BinaryTreeSearch binaryTreeSearch = new BinaryTreeSearch();
+        //创建节点
+        BinaryTreeSearch.HeroNode root = new BinaryTreeSearch.HeroNode(1, "宋江");
+        BinaryTreeSearch.HeroNode node2 = new BinaryTreeSearch.HeroNode(2, "吴用");
+        BinaryTreeSearch.HeroNode node3 = new BinaryTreeSearch.HeroNode(3, "卢俊义");
+        BinaryTreeSearch.HeroNode node4 = new BinaryTreeSearch.HeroNode(4, "林冲");
+        BinaryTreeSearch.HeroNode node5 = new BinaryTreeSearch.HeroNode(5, "李逵");
+        root.setLeft(node2);
+        root.setRight(node3);
+        node3.setRight(node4);
+        node3.setLeft(node5);
+        binaryTreeSearch.setRoot(root);
+
+        //前序遍历查找
+        System.out.println("前序遍历查找------------------------");
+        BinaryTreeSearch.HeroNode heroNode = binaryTreeSearch.preOrder(3);
+        System.out.println(heroNode);
+
+
+        //中序遍历查找
+        System.out.println("中序遍历查找------------------------");
+        BinaryTreeSearch.HeroNode heroNode1 = binaryTreeSearch.preOrder(3);
+        System.out.println(heroNode1);
+
+
+        //后序遍历查找
+        System.out.println("后序遍历查找------------------------");
+        BinaryTreeSearch.HeroNode heroNode2 = binaryTreeSearch.preOrder(3);
+        System.out.println(heroNode2);
 
     }
 }
