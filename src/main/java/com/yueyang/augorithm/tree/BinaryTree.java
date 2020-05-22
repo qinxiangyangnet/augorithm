@@ -49,6 +49,23 @@ public class BinaryTree {
     }
 
 
+    /**
+     * 删除节点
+     */
+    public void deleteNode(int no) {
+        if (root == null) {
+            System.out.println("二叉树为空，无法删除");
+            return;
+        }
+        if (root.no == no) {
+            root = null;
+            return;
+        }
+        root.deleteNode(no);
+
+    }
+
+
     public static class HeroNode {
         //编号
         private int no;
@@ -147,6 +164,28 @@ public class BinaryTree {
                 this.right.aftOrder();
             }
             System.out.println(this);
+        }
+
+        /**
+         * 删除节点
+         */
+        public void deleteNode(int no) {
+            if (this.left != null && this.left.no == no) {
+                this.left = null;
+                return;
+            }
+            if (this.left != null) {
+                this.left.deleteNode(no);
+            }
+            if (this.right != null && this.right.no == no) {
+                this.right = null;
+                return;
+            }
+            if (this.right != null) {
+                this.right.deleteNode(no);
+            }
+
+
         }
     }
 
