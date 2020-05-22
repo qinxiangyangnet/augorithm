@@ -130,4 +130,34 @@ public class Test {
 
 
     }
+
+
+    /**
+     * 线索二叉树
+     */
+    @org.junit.Test
+    public void test5() {
+        ThreadedBinaryTree threadedBinaryTree = new ThreadedBinaryTree();
+        //创建节点
+        ThreadedBinaryTree.HeroNode root = new ThreadedBinaryTree.HeroNode(1, "tom");
+        ThreadedBinaryTree.HeroNode node2 = new ThreadedBinaryTree.HeroNode(3, "jetty");
+        ThreadedBinaryTree.HeroNode node3 = new ThreadedBinaryTree.HeroNode(6, "smith");
+        ThreadedBinaryTree.HeroNode node4 = new ThreadedBinaryTree.HeroNode(8, "林冲");
+        ThreadedBinaryTree.HeroNode node5 = new ThreadedBinaryTree.HeroNode(10, "李逵");
+        ThreadedBinaryTree.HeroNode node6 = new ThreadedBinaryTree.HeroNode(14, "tim");
+        root.setLeft(node2);
+        root.setRight(node3);
+        node2.setRight(node5);
+        node2.setLeft(node4);
+        node3.setLeft(node6);
+        threadedBinaryTree.setRoot(root);
+
+        //测试中序线索化
+        threadedBinaryTree.midThreadedNodes();
+        ThreadedBinaryTree.HeroNode left = node5.getLeft();
+        System.out.println(left);
+        ThreadedBinaryTree.HeroNode right = node5.getRight();
+        System.out.println(right);
+
+    }
 }
