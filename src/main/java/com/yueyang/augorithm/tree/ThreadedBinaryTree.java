@@ -112,6 +112,45 @@ public class ThreadedBinaryTree {
 
     }
 
+    /**
+     * 后序线索化二叉树
+     */
+
+    public void postThreadedNodes() {
+        this.postThreadedNodes(root);
+    }
+
+    public void postThreadedNodes(HeroNode node) {
+        if (node == null) {
+            return;
+        }
+
+
+        //先线索化左子树
+        if (node.leftType != 1) {
+            postThreadedNodes(node.getLeft());
+        }
+
+
+        //线索化右子树
+        if (node.rightType != 1) {
+            postThreadedNodes(node.getRight());
+        }
+
+
+        if (node.left == null) {
+            node.setLeft(pre);
+            node.setLeftType(1);
+        }
+
+        if (pre != null && pre.right == null) {
+            pre.setRight(node);
+            pre.setRightType(1);
+        }
+        pre = node;
+
+    }
+
 
     /**
      * 前序遍历

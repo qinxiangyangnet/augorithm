@@ -153,7 +153,7 @@ public class Test {
         threadedBinaryTree.setRoot(root);
 
         //测试中序线索化
-        threadedBinaryTree.preThreadedNodes();
+        threadedBinaryTree.postThreadedNodes();
         ThreadedBinaryTree.HeroNode left = node5.getLeft();
         System.out.println(left);
         ThreadedBinaryTree.HeroNode right = node5.getRight();
