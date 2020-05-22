@@ -151,6 +151,32 @@ public class ThreadedBinaryTree {
 
     }
 
+    /**
+     * 中序遍历
+     */
+    public void midOrderTree() {
+        if (root == null) {
+            return;
+        }
+        HeroNode temp = root;
+        while (temp != null) {
+            while (temp.getLeftType() == 0) {
+                temp = temp.left;
+            }
+
+            System.out.println(temp);
+
+            while (temp.getRightType() == 1) {
+                temp = temp.right;
+
+                System.out.println(temp);
+            }
+
+            temp = temp.getRight();
+        }
+
+    }
+
 
     /**
      * 前序遍历
