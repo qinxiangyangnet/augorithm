@@ -160,18 +160,22 @@ public class ThreadedBinaryTree {
         }
         HeroNode temp = root;
         while (temp != null) {
+            //循环找到leftType=1的节点
             while (temp.getLeftType() == 0) {
                 temp = temp.left;
             }
 
+            //打印当前节点
             System.out.println(temp);
 
+            //如果当前节点的右指针指向的是后继节点一直输出
             while (temp.getRightType() == 1) {
                 temp = temp.right;
 
                 System.out.println(temp);
             }
 
+            //替换这个遍历的节点
             temp = temp.getRight();
         }
 
