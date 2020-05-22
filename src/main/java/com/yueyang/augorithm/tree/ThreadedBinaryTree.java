@@ -26,46 +26,53 @@ public class ThreadedBinaryTree {
     }
 
 
-//    /**
-//     * 前线索化二叉树
-//     */
-//
-//    public void preThreadedNodes() {
-//        this.preThreadedNodes(root);
-//    }
-//
-//    public void preThreadedNodes(HeroNode node) {
-//        if (node == null) {
-//            return;
-//        }
-//        //线索化当前节点
-//        //处理当前节点的前驱节点
-//
-//        if (node.getLeft() == null) {
-//            //当前节点左指针指向前驱节点
-//            node.setLeft(pre);
-//            //修改当前节点的左指针的类型
-//            node.setLeftType(1);
-//
-//        }
-//
-//        //处理后继节点，下次处理
-//        if (pre != null && pre.getRight() != null) {
-//           // node.setRight(pre);
-//         //   node.setRightType(1);
-//        }
-//
-//        pre = node;
-//        //先线索化左子树
-//        preThreadedNodes(node.getLeft());
-//
-//
-//
-//        //线索化右子树
-//        preThreadedNodes(node.getRight());
-//
-//
-//    }
+    /**
+     * 前线索化二叉树
+     */
+
+    public void preThreadedNodes() {
+        this.preThreadedNodes(root);
+    }
+
+    public void preThreadedNodes(HeroNode node) {
+        if (node == null) {
+            return;
+        }
+
+        //线索化当前节点
+        //处理当前节点的前驱节点
+
+        if (node.getLeft() == null) {
+            //当前节点左指针指向前驱节点
+            node.setLeft(pre);
+            //修改当前节点的左指针的类型
+            node.setLeftType(1);
+
+        }
+
+        //处理后继节点，下次处理
+        if (pre != null && pre.getRight() == null) {
+            pre.right = node;
+            pre.setRightType(1);
+        }
+
+        pre = node;
+
+        //只有当类型为false时才进入，否则进入死循环
+
+        //先线索化左子树
+        if (node.leftType != 1) {
+            preThreadedNodes(node.getLeft());
+        }
+
+
+        //线索化右子树
+        if (node.rightType != 1) {
+            preThreadedNodes(node.getRight());
+        }
+
+
+    }
 
     /**
      * 中序线索化二叉树
