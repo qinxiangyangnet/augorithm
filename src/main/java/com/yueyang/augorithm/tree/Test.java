@@ -110,9 +110,23 @@ public class Test {
 
         System.out.println("前序遍历---------------------");
         binaryTree.preOrder();
+    }
 
+    /**
+     * 顺序存储遍历
+     */
+    @org.junit.Test
+    public void test4() {
+        int arr[] = {1, 2, 3, 4, 5, 6, 7};
+        ArrayBinaryTree arrayBinaryTree = new ArrayBinaryTree(arr);
+        System.out.println("前序遍历");
+        arrayBinaryTree.preOrder(0);
 
+        System.out.println("中序遍历");
+        arrayBinaryTree.midOrder(0);
 
+        System.out.println("后序遍历");
+        arrayBinaryTree.postOrder(0);
 
 
     }
