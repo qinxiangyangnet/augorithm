@@ -179,7 +179,46 @@ public class ThreadedBinaryTree {
             temp = temp.getRight();
         }
 
+
     }
+
+    /**
+     * 前序遍历
+     */
+
+    public void preOrderTree() {
+        HeroNode node = root;
+        while (node != null) {
+            System.out.println(node);
+            if (node.leftType == 0) {
+                node = node.left;
+            } else {
+                node = node.right;
+            }
+        }
+    }
+
+    /**
+     * 后序遍历
+     */
+
+//    public void postOrderTree() {
+//        HeroNode node = root;
+//        while (node != null) {
+//
+//            while (node.leftType == 0) {
+//                node = node.left;
+//            }
+//            System.out.println(node);
+//            while (node.rightType == 1) {
+//                node = node.right;
+//                System.out.println(node);
+//
+//            }
+//            node=node.right;
+//
+//        }
+//    }
 
 
     /**

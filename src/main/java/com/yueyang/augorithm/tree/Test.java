@@ -153,13 +153,13 @@ public class Test {
         threadedBinaryTree.setRoot(root);
 
         //测试中序线索化
-        threadedBinaryTree.midThreadedNodes();
+        threadedBinaryTree.preThreadedNodes();
         ThreadedBinaryTree.HeroNode left = node5.getLeft();
         System.out.println(left);
         ThreadedBinaryTree.HeroNode right = node5.getRight();
         System.out.println(right);
         System.out.println();
 
-        threadedBinaryTree.midOrderTree();
+        threadedBinaryTree.preOrderTree();
     }
 }
