@@ -160,6 +160,7 @@ public class Test {
         System.out.println(right);
         System.out.println();
 
+
         threadedBinaryTree.preOrderTree();
     }
 }
