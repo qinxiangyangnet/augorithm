@@ -20,15 +20,20 @@ public class HeapSort {
 //        System.out.println(Arrays.toString(arr));
 
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
+            //从最后一个非叶子节点出发，从左往右，从下到上
             HeapSort.adjustHeap(arr, i, arr.length);
         }
 
+        /**
+         * 将栈顶元素放到数组最后
+         */
         int temp = 0;
         for (int j = arr.length - 1; j > 0; j--) {
             temp = arr[j];
             arr[j] = arr[0];
             arr[0] = temp;
             HeapSort.adjustHeap(arr, 0, j);
+
         }
     }
 
