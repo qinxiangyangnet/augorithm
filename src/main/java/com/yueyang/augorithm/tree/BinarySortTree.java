@@ -185,6 +185,13 @@ public class BinarySortTree {
         return targer.value;
 
     }
+
+    /**
+     * 获取根节点
+     */
+    public Node getRoot() {
+        return root;
+    }
     /*
     删除节点
      */
@@ -226,19 +233,28 @@ public class BinarySortTree {
                 //删除 只有一个子树的节点
                 //如果要删除的节点有左子节点
                 if (node.left != null) {
-                    // 如果targetNode是parent的左子节点， parent.left=targetNode.left;
-                    if (parentNode.left.value == value) {
-                        parentNode.left = node.left;
+                    if (parentNode != null) {
+
+                        // 如果targetNode是parent的左子节点， parent.left=targetNode.left;
+                        if (parentNode.left.value == value) {
+                            parentNode.left = node.left;
+                        } else {
+                            parentNode.right = node.left;
+                        }
                     } else {
-                        parentNode.right = node.left;
+                        root = node.left;
                     }
                 } else {
                     //说明要删除的节点是有右子节点
                     //,如果targetNode有右子节点
-                    if (parentNode.left.value == value) {
-                        parentNode.left = node.right;
-                    } else {
-                        parentNode.right = node.right;
+                    if (parentNode != null) {
+                        if (parentNode.left.value == value) {
+                            parentNode.left = node.right;
+                        } else {
+                            parentNode.right = node.right;
+                        }
+                    }else{
+                        root=node.right;
                     }
 
                 }
