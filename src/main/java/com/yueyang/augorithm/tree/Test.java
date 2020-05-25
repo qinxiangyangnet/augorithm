@@ -163,4 +163,22 @@ public class Test {
 
         threadedBinaryTree.preOrderTree();
     }
+
+    /**
+     * 测试二叉排序树
+     */
+    @org.junit.Test
+    public void test6() {
+
+        int arr[] = {7, 3, 10, 12, 5, 1, 9};
+        BinarySortTree binarySortTree = new BinarySortTree();
+        for (int i : arr) {
+
+            binarySortTree.add(new BinarySortTree.Node(i));
+        }
+
+        System.out.println("中序遍历二叉树");
+        binarySortTree.infixOrder();
+
+    }
 }
