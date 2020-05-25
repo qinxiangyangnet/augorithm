@@ -170,7 +170,7 @@ public class Test {
     @org.junit.Test
     public void test6() {
 
-        int arr[] = {7, 3, 10, 12, 5, 1, 9};
+        int arr[] = {7, 3, 10, 12, 5, 1, 9,2};
         BinarySortTree binarySortTree = new BinarySortTree();
         for (int i : arr) {
 
@@ -180,5 +180,10 @@ public class Test {
         System.out.println("中序遍历二叉树");
         binarySortTree.infixOrder();
 
+        //删除节点
+        binarySortTree.deleteNode(2);
+
+        System.out.println("中序遍历二叉树");
+        binarySortTree.infixOrder();
     }
 }
