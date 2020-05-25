@@ -164,6 +164,27 @@ public class BinarySortTree {
         return root.searchParent(value);
 
     }
+
+    /**
+     * 返回
+     * 删除
+     * 两个功能
+     *
+     * @param node 传入的节点，（当做二叉树的根节点）
+     * @return 返回以node为根节点二叉排序树的最小节点的值
+     */
+    public int delRightTreeMin(Node node) {
+        Node targer = node;
+        //循环查找左节点，就会找到最小值
+        while (targer.left != null) {
+            targer = targer.left;
+        }
+        //这时targer指向最小节点
+        //删除最小节点
+        deleteNode(targer.value);
+        return targer.value;
+
+    }
     /*
     删除节点
      */
@@ -197,7 +218,33 @@ public class BinarySortTree {
                     parentNode.right = null;
                 }
 
+            } else if (node.left != null && node.right != null) {
+                //表示有左右子树
+                int min = delRightTreeMin(node.right);
+                node.value = min;
+            } else {
+                //删除 只有一个子树的节点
+                //如果要删除的节点有左子节点
+                if (node.left != null) {
+                    // 如果targetNode是parent的左子节点， parent.left=targetNode.left;
+                    if (parentNode.left.value == value) {
+                        parentNode.left = node.left;
+                    } else {
+                        parentNode.right = node.left;
+                    }
+                } else {
+                    //说明要删除的节点是有右子节点
+                    //,如果targetNode有右子节点
+                    if (parentNode.left.value == value) {
+                        parentNode.left = node.right;
+                    } else {
+                        parentNode.right = node.right;
+                    }
+
+                }
+
             }
+
         }
 
     }

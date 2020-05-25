@@ -181,7 +181,7 @@ public class Test {
         binarySortTree.infixOrder();
 
         //删除节点
-        binarySortTree.deleteNode(2);
+        binarySortTree.deleteNode(10);
 
         System.out.println("中序遍历二叉树");
         binarySortTree.infixOrder();
