@@ -215,7 +215,7 @@ public class Test {
 
 
         System.out.println(avlTree.getRoot());
-        System.out.println(avlTree.getRoot().);
+        System.out.println(avlTree.getRoot());
 
 
     }
