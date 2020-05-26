@@ -170,7 +170,7 @@ public class Test {
     @org.junit.Test
     public void test6() {
 
-        int arr[] = {7, 3, 10, 12, 5, 1, 9,2};
+        int arr[] = {7, 3, 10, 12, 5, 1, 9, 2};
         BinarySortTree binarySortTree = new BinarySortTree();
         for (int i : arr) {
 
@@ -186,4 +186,38 @@ public class Test {
         System.out.println("中序遍历二叉树");
         binarySortTree.infixOrder();
     }
+
+
+    /**
+     * 测试AVL
+     */
+    @org.junit.Test
+    public void test7() {
+
+       // int arr[] = {4,3,6,5,7,8};
+        //int arr[] = {10,12,8,9,7,6};
+        int arr[] = {10,11,7,6,8,9};
+        AVLTree avlTree = new AVLTree();
+        for (int i : arr) {
+
+            avlTree.add(new AVLTree.Node(i));
+        }
+
+
+        System.out.println("中序遍历二叉树");
+        avlTree.infixOrder();
+
+
+        System.out.println(avlTree.getRoot().height());
+
+        System.out.println(avlTree.getRoot().leftHeight());
+        System.out.println(avlTree.getRoot().rightHeight());
+
+
+        System.out.println(avlTree.getRoot());
+        System.out.println(avlTree.getRoot().);
+
+
+    }
+
 }
