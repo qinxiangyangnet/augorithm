@@ -27,6 +27,8 @@ public class Graph {
      */
     private int numofEdges;
 
+    private boolean[] isvisited;
+
 
     /**
      * 构造器
@@ -38,6 +40,7 @@ public class Graph {
         edges = new int[n][n];
         vertexList = new ArrayList<>(n);
         numofEdges = 0;
+        isvisited=new boolean[n];
     }
 
     /**
