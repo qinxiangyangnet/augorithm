@@ -58,6 +58,15 @@ public class KnapsackProblem {
             System.out.println();
         }
 
+        //遍历查看
+        for (int i = 0; i < path.length; i++) {
+
+            for (int j = 0; j < path[0].length; j++) {
+                System.out.print(path[i][j] + " ");
+            }
+            System.out.println();
+        }
+
         //输出我们最后放的那些商品,逆向遍历
         int i=path.length-1;
         int j=path[0].length-1;
