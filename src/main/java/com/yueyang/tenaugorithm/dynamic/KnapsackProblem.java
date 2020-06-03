@@ -15,6 +15,9 @@ public class KnapsackProblem {
         int n = 4;//背包的最大容量
         int m = w.length;//个数
         int[][] v = new int[m + 1][n + 1];
+
+        //为了记录商品放入的情况定义一个二维数组
+        int[][] path = new int[m + 1][n + 1];
         //初始化第一行为0；
         for (int i = 0; i < v[0].length; i++) {
             v[0][i] = 0;
@@ -32,7 +35,15 @@ public class KnapsackProblem {
                 if (w[i - 1] > j) {
                     v[i][j] = v[i - 1][j];
                 } else {
-                    v[i][j] = Math.max(v[i - 1][j], val[i-1] + v[i - 1][j - w[i - 1]]);
+                    // v[i][j] = Math.max(v[i - 1][j], val[i-1] + v[i - 1][j - w[i - 1]]);
+                    //为了记录商品存放背包的情况，不能简单的使用公式，需要使用if...else替代
+                    if (v[i - 1][j] < val[i - 1] + v[i - 1][j - w[i - 1]]) {
+                        v[i][j] = val[i - 1] + v[i - 1][j - w[i - 1]];
+                        path[i][j] = 1;
+                    } else {
+                        v[i][j] = v[i - 1][j];
+                    }
+
                 }
             }
         }
@@ -45,6 +56,17 @@ public class KnapsackProblem {
                 System.out.print(v[i][j] + " ");
             }
             System.out.println();
+        }
+
+        //输出我们最后放的那些商品,逆向遍历
+        int i=path.length-1;
+        int j=path[0].length-1;
+        while(i>0&&j>0){
+            if(path[i][j]==1){
+                System.out.printf("第%d个商品放入到背包中\n",i);
+                j -=w[i-1];
+            }
+            i--;
         }
 
 
