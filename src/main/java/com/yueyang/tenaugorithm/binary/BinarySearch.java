@@ -11,6 +11,7 @@ public class BinarySearch {
         int[] arr={1,3, 8, 10, 11, 67, 100};
         int i = binarySearch(arr, 0);
         System.out.println("索引： "+i);
+
     }
 
 
